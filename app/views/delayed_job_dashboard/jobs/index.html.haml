@@ -1,0 +1,16 @@
+%div
+  .title Current Jobs
+  %table#jobs
+    %tr
+      %td.header.left Job
+      %td.header Running
+      %td.header Pending
+      %td.header Retrying
+      %td.header.right Failed
+      - @jobs.each do |job|
+        %tr
+          %td.col.left= job[:name]
+          %td.col= job[:running]
+          %td.col= job[:pending]
+          %td.col= job[:retrying]
+          %td.col= job[:failed]
