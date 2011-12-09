@@ -7,11 +7,11 @@ require "delayed_job_dashboard/version"
 Gem::Specification.new do |s|
   s.name        = "delayed_job_dashboard"
   s.version     = DelayedJobDashboard::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of DelayedJobDashboard."
-  s.description = "TODO: Description of DelayedJobDashboard."
+  s.authors     = ["Ben Kempner"]
+  s.email       = ["ben.kempner@gmail.com"]
+  s.homepage    = "http://www.github.com/bkempner/delayed_job_dashboard"
+  s.summary     = "Delayed Job Dashboard"
+  s.description = "Dleayed Job Dashboard"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
