@@ -1,4 +1,6 @@
 require 'active_support/dependencies'
+require 'haml'
+require 'delayed_job'
 
 module DjDashboard
 
