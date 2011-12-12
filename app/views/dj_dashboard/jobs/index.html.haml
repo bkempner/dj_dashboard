@@ -1,0 +1,23 @@
+%div
+  .title Current Jobs
+  %table#jobs
+    %tr
+      %td.header.left Job
+      %td.header Running
+      %td.header Pending
+      %td.header Retrying
+      %td.header.right Failed
+      - @jobs.each.with_index do |job, index|
+        %tr{ :class => "#{index % 2 === 0 ? 'striped' : ''}" }
+          %td.col.left= job[:name]
+          %td.col= job[:running]
+          %td.col= job[:pending]
+          %td.col= job[:retrying]
+          %td.col= job[:failed]
+      %tr
+        %td.total
+        %td.total= @jobs.map { |j| j[:running] }.sum
+        %td.total= @jobs.map { |j| j[:pending] }.sum
+        %td.total= @jobs.map { |j| j[:retrying] }.sum
+        %td.total= @jobs.map { |j| j[:failed] }.sum
+

@@ -1,0 +1,9 @@
+body { font-family: Arial; color: #fff; background-color: #333 }
+.title { width: 750px; margin: 25px auto; margin-top: 50px; padding-left: 15px; font-size: 36px; border-radius: 15px; background-color: #444; padding: 20px; }
+#jobs { border-collapse: collapse; border: 1px solid #333; margin: 0 auto; -moz-border-radius: 15px; width: 750px; }
+.header { width: 125px; text-align: center; padding: 20px; color: #ddd; font-size: 21px; border-bottom: 2px solid #888; }
+.header.left { width: 250px: 10px; text-align: left; }
+.col { padding: 15px; font-size: 18px; text-align: center; color: #999; }
+tr.striped { background-color: #292929; }
+.col.left { text-align: left; }
+.total { text-align: center; font-weight: bold; border-top: 2px solid #888; padding: 20px; }

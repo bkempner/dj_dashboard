@@ -1,0 +1,59 @@
+require 'rails/generators'
+
+module DjDashboard
+  module Tasks
+    class Install
+      def self.run
+        puts 'installing dj_dashboard'
+        copy_assets_files
+        copy_migration_files
+      end
+
+      def self.copy_assets_files
+        return nil if Rails.version =~ /3.0/ # not needed for rails 3.0
+        origin = File.join(gem_path, 'public')
+        destination = Rails.root.join('app/assets') if Rails.version =~ /3.1/
+        destination = Rails.root.join('public') if Rails.version =~ /3.0/
+        puts copy_files(%w( stylesheets images javascripts ), origin, destination, 'dj_dashboard')
+      end
+
+      def self.copy_migration_files
+        puts 'now copying migration files'
+        origin = File.join(gem_path, 'db')
+        destination = Rails.root.join('db')
+        puts copy_files(%w( migrate ), origin, destination)
+      end
+
+      def self.gem_path
+        File.expand_path('../../..', File.dirname(__FILE__))
+      end
+
+      def self.copy_files(directories, origin, destination, prefix = nil)
+        directories.each do |directory|
+          dirs = [origin, directory, prefix, '**/*'].compact
+          Dir[File.join(*dirs)].each do |file|
+            relative  = file.gsub(/^#{origin}\//, '')
+            dirs = [destination, relative].compact
+            dest_file = File.join(*dirs)
+            dest_dir  = File.dirname(dest_file)
+
+            if !File.exist?(dest_dir)
+              FileUtils.mkdir_p(dest_dir)
+            end
+
+            copier.copy_file(file, dest_file) unless File.directory?(file)
+          end
+        end
+      end
+
+      def self.copier
+        unless @copier
+          Rails::Generators::Base.source_root(gem_path)
+          @copier = Rails::Generators::Base.new
+        end
+        @copier
+      end
+
+    end
+  end
+end
