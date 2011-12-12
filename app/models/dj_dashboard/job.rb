@@ -12,7 +12,7 @@ module DjDashboard
         {
           name:     job,
           running:  Delayed::Job.where("handler like '%#{job}%'").where("locked_at is not null").count,
-          failed:   Delayed::Job.where("handler like '%#{job}%'").where("failed_at is not null and attempts > 3").count,
+          failed:   Delayed::Job.where("handler like '%#{job}%'").where("failed_at is not null and attempts >= 3").count,
           pending:  Delayed::Job.where("handler like '%#{job}%'").where(locked_at: nil, failed_at: nil).count,
           retrying: Delayed::Job.where("handler like '%#{job}%'").where(locked_at: nil).where("failed_at is not null").count
         }
