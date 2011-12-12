@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dj_dashboard (0.0.3)
+    dj_dashboard (0.0.4)
       delayed_job
       haml
       rails (~> 3.0)
