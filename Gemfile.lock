@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     dj_dashboard (0.0.3)
+      delayed_job
       haml
+      rails (~> 3.0)
       sass
 
 GEM
