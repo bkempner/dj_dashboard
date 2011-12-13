@@ -44,6 +44,11 @@ Below is an example using devise:
         end
       end
     end
+    
+# Build Status
+
+[![Build Status](https://secure.travis-ci.org/sferik/rails_admin.png?branch=master)][travis]
+[travis]: http://travis-ci.org/bkempner/dj_dashboard
 
 # License
 
