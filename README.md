@@ -1,31 +1,35 @@
-= DjDashboard
+# DjDashboard
 
 The missing dashboard for delayed_job.
 
 Tested with Ruby 1.9.2, Rails 3.0+
 
-= Installation
+# Screenshots
+
+Coming soon...
+
+# Installation
 
 Add to your Gemfile:
 
-  gem 'dj_dashboard'
+    gem 'dj_dashboard'
 
 Then run:
 
-  rake dj_dashboard:install
-  rake db:migrate
+    rake dj_dashboard:install
+    rake db:migrate
 
 Installation may take several minutes if you have a lot of existing jobs (50k+).
 
-= Usage
+# Usage
 
 Start the server:
 
-  rails s
+    rails s
 
 View the dashboard at: http://localhost:3000/dj_dashboard
 
-= Authentication
+# Authentication
 
 The installer will create an initializer in app/config/initializers/dj_dashboard.rb
 
@@ -33,14 +37,14 @@ In the initializer, you can define any auth logic that will be used by the contr
 
 Below is an example using devise:
 
-  module DjDashboard
-    class ApplicationController < ActionController::Base
-      def authenticate!
-        redirect_to new_user_session_url unless user_signed_in?
+    module DjDashboard
+      class ApplicationController < ActionController::Base
+        def authenticate!
+          redirect_to new_user_session_url unless user_signed_in?
+        end
       end
     end
-  end
 
-= License
+# License
 
 This project uses MIT-LICENSE.
