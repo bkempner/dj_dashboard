@@ -13,3 +13,4 @@ module DjDashboard
 end
 
 require 'dj_dashboard/engine'
+require 'ext/delayed_job'
