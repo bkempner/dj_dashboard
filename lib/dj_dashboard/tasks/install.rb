@@ -6,7 +6,8 @@ module DjDashboard
       def self.run
         puts 'installing dj_dashboard'
         copy_assets_files
-        copy_migration_files
+        copy_db_files
+        copy_config_files
       end
 
       def self.copy_assets_files
@@ -17,11 +18,18 @@ module DjDashboard
         puts copy_files(%w( stylesheets images javascripts ), origin, destination, 'dj_dashboard')
       end
 
-      def self.copy_migration_files
-        puts 'now copying migration files'
+      def self.copy_db_files
+        puts 'now copying db files'
         origin = File.join(gem_path, 'db')
         destination = Rails.root.join('db')
         puts copy_files(%w( migrate ), origin, destination)
+      end
+
+      def self.copy_config_files
+        puts 'now copying initializer file'
+        origin = File.join(gem_path, 'config')
+        destination = Rails.root.join('config')        
+        puts copy_files(%w( initializers ), origin, destination)
       end
 
       def self.gem_path
