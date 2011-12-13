@@ -3,18 +3,14 @@ require 'set'
 module DjDashboard
   class Job
     def self.fetch(opts={})
-      results = Delayed::Job.select(:handler).group(:handler)
-      names = results.reduce(Set.new) do |names, result|
-        names << result[:handler].chomp.scan(/ruby\/\w+:([a-zA-Z:]+)\ /).flatten.first
-      end
-
-      names.map do |job|
+      jobs = Delayed::Job.select(:job_name).group(:job_name)
+      jobs.map do |job|
         {
-          name:     job,
-          running:  Delayed::Job.where("handler like '%#{job}%'").where("locked_at is not null").count,
-          failed:   Delayed::Job.where("handler like '%#{job}%'").where("failed_at is not null and attempts >= 3").count,
-          pending:  Delayed::Job.where("handler like '%#{job}%'").where(locked_at: nil, failed_at: nil).count,
-          retrying: Delayed::Job.where("handler like '%#{job}%'").where(locked_at: nil).where("failed_at is not null").count
+          name:     job.job_name,
+          running:  Delayed::Job.where(job_name: job.job_name).where("locked_at is not null").count,
+          failed:   Delayed::Job.where(job_name: job.job_name).where("failed_at is not null and attempts >= 3").count,
+          pending:  Delayed::Job.where(job_name: job.job_name).where(locked_at: nil, failed_at: nil).count,
+          retrying: Delayed::Job.where(job_name: job.job_name).where(locked_at: nil).where("failed_at is not null").count
         }
       end
     end

@@ -1,5 +1,5 @@
 %div
-  .title Current Jobs
+  .title Delayed Jobs
   %table#jobs
     %tr
       %td.header.left Job
@@ -10,14 +10,14 @@
       - @jobs.each.with_index do |job, index|
         %tr{ :class => "#{index % 2 === 0 ? 'striped' : ''}" }
           %td.col.left= job[:name]
-          %td.col= job[:running]
-          %td.col= job[:pending]
-          %td.col= job[:retrying]
-          %td.col= job[:failed]
+          %td.col= number_with_delimiter(job[:running])
+          %td.col= number_with_delimiter(job[:pending])
+          %td.col= number_with_delimiter(job[:retrying])
+          %td.col= number_with_delimiter(job[:failed])
       %tr
         %td.total
-        %td.total= @jobs.map { |j| j[:running] }.sum
-        %td.total= @jobs.map { |j| j[:pending] }.sum
-        %td.total= @jobs.map { |j| j[:retrying] }.sum
-        %td.total= @jobs.map { |j| j[:failed] }.sum
+        %td.total= number_with_delimiter @jobs.map { |j| j[:running] }.sum
+        %td.total= number_with_delimiter @jobs.map { |j| j[:pending] }.sum
+        %td.total= number_with_delimiter @jobs.map { |j| j[:retrying] }.sum
+        %td.total= number_with_delimiter @jobs.map { |j| j[:failed] }.sum
 
