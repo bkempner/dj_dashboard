@@ -47,8 +47,14 @@ Below is an example using devise:
     
 # Build Status
 
-[![Build Status](https://secure.travis-ci.org/sferik/rails_admin.png?branch=master)][travis]
+[![Build Status](https://secure.travis-ci.org/bkempner/dj_dashboard.png?branch=master)][travis]
 [travis]: http://travis-ci.org/bkempner/dj_dashboard
+
+# Dependency Status
+
+[![Dependency Status](https://gemnasium.com/bkempner/dj_dashboard.png?travis)][gemnasium]
+
+[gemnasium]: https://gemnasium.com/bkempner/dj_dashboard
 
 # License
 
