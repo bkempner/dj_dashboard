@@ -8,6 +8,7 @@ module DjDashboard
         copy_assets_files
         copy_db_files
         copy_config_files
+        run_migrations
       end
 
       def self.copy_assets_files
@@ -60,6 +61,10 @@ module DjDashboard
           @copier = Rails::Generators::Base.new
         end
         @copier
+      end
+
+      def self.run_migrations
+        Rake::Task['db:migrate'].invoke
       end
 
     end
