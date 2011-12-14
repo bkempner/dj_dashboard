@@ -16,21 +16,21 @@ module DjDashboard
         origin = File.join(gem_path, 'public')
         destination = Rails.root.join('app/assets') if Rails.version =~ /3.1/
         destination = Rails.root.join('public') if Rails.version =~ /3.0/
-        puts copy_files(%w( stylesheets images javascripts ), origin, destination, 'dj_dashboard')
+        copy_files(%w( stylesheets images javascripts ), origin, destination, 'dj_dashboard')
       end
 
       def self.copy_db_files
         puts 'now copying db files'
         origin = File.join(gem_path, 'db')
         destination = Rails.root.join('db')
-        puts copy_files(%w( migrate ), origin, destination)
+        copy_files(%w( migrate ), origin, destination)
       end
 
       def self.copy_config_files
         puts 'now copying initializer file'
         origin = File.join(gem_path, 'config')
         destination = Rails.root.join('config')        
-        puts copy_files(%w( initializers ), origin, destination)
+        copy_files(%w( initializers ), origin, destination)
       end
 
       def self.gem_path
@@ -64,6 +64,7 @@ module DjDashboard
       end
 
       def self.run_migrations
+        puts 'now running migrations'
         Rake::Task['db:migrate'].invoke
       end
 
