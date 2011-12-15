@@ -17,7 +17,6 @@ Add to your Gemfile:
 Then run:
 
     rake dj_dashboard:install
-    rake db:migrate
 
 Installation may take several minutes if you have a lot of existing jobs (50k+).
 
