@@ -1,0 +1,19 @@
+%tr.stats{:class => "#{@stat_type.to_s}"}
+  %td{:colspan => 5, :id => "stats_#{@job_name.gsub('::', '__')}"} 
+    %h3= "#{@stat_type.to_s} jobs"
+    %table.stat
+      %tr.header
+        %td Priority
+        %td Created
+        %td Run
+        %td Locked
+        %td Attempts
+        %td Failed
+      - @jobs.each.with_index do |job, index|
+        %tr{:class => "#{index % 2 === 0 ? 'striped' : nil}"}
+          %td.center= job.priority
+          %td= "#{time_ago_in_words job.created_at} ago"
+          %td= job.run_at ? "#{time_ago_in_words job.run_at} ago" : "--"
+          %td= job.locked_at ? "#{time_ago_in_words job.locked_at} ago" : "--"
+          %td.center= job.attempts
+          %td= job.failed_at ? "#{time_ago_in_words job.failed_at} ago" : "--"

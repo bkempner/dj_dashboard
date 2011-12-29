@@ -1,0 +1,1 @@
+$('#job_<%= @job_name.gsub('::', '__') %>').after("<%= escape_javascript(render('job_stats')) %>")

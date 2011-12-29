@@ -8,12 +8,12 @@
       %td.header Retrying
       %td.header.right Failed
       - @jobs.each.with_index do |job, index|
-        %tr{ :class => "#{index % 2 === 0 ? 'striped' : ''}" }
-          %td.col.left= job[:name]
-          %td.col= number_with_delimiter(job[:running])
-          %td.col= number_with_delimiter(job[:pending])
-          %td.col= number_with_delimiter(job[:retrying])
-          %td.col= number_with_delimiter(job[:failed])
+        %tr{ :id => "job_#{job[:name].gsub('::','__')}", :class => "#{index % 2 === 0 ? 'striped' : ''}" }
+          %td.col.all.left= link_to job[:name], {:controller => 'dj_dashboard/jobs', :action => 'stats', :job_name => job[:name], :type => :all}, :remote => true
+          %td.col.running= link_to number_with_delimiter(job[:running]), {:controller => 'dj_dashboard/jobs', :action => 'stats', :job_name => job[:name], :type => :running}, :remote => true
+          %td.col.pending= link_to number_with_delimiter(job[:pending]), {:controller => 'dj_dashboard/jobs', :action => 'stats', :job_name => job[:name], :type => :pending}, :remote => true
+          %td.col.retrying= link_to number_with_delimiter(job[:retrying]), {:controller => 'dj_dashboard/jobs', :action => 'stats', :job_name => job[:name], :type => :retrying}, :remote => true
+          %td.col.failed= link_to number_with_delimiter(job[:failed]), {:controller => 'dj_dashboard/jobs', :action => 'stats', :job_name => job[:name], :type => :failed}, :remote => true
       %tr
         %td.total
         %td.total= number_with_delimiter @jobs.map { |j| j[:running] }.sum

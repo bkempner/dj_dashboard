@@ -11,7 +11,9 @@ module DjDashboard
         run_migrations
       end
 
+      # TODO: This is wierd...
       def self.copy_assets_files
+        puts 'now copying assets'
         return nil if Rails.version =~ /3.0/ # not needed for rails 3.0
         origin = File.join(gem_path, 'public')
         destination = Rails.root.join('app/assets') if Rails.version =~ /3.1/
