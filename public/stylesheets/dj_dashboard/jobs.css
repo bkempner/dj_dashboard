@@ -24,7 +24,7 @@ tr.striped { background-color: #292929; }
 .stats.retrying td .stat tr.striped td { background-color: #D49E3B; }
 .stats.failed td { background-color: #F06063; }
 .stats.failed td .stat tr.striped td { background-color: #CF5355; }
-.stats td .stat { border-collapse: collapse; }
+.stats td .stat { width: 100%; border-collapse: collapse; }
 .stats td .stat tr.header { border-bottom: 2px solid #333; }
 .stats td .stat tr.header td { border: none; font-size: 15px; text-align: left; font-weight: bold; }
 .stats td .stat td { height: 24px; font-size: 13px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #333; }

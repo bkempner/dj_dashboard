@@ -1,1 +1,11 @@
-$('#job_<%= @job_name.gsub('::', '__') %>').after("<%= escape_javascript(render('job_stats')) %>")
+var job = $('#job_<%= @job_name.gsub('::', '__') %>')
+var stats = $('#stats_<%= @job_name.gsub('::', '__') %>')
+
+if($('#stats_<%= @job_name.gsub('::', '__') %>.stats.<%= @stat_type.to_s %>').size() > 0) {
+  stats.remove();
+} else {
+  if(stats.size() > 0) {
+    stats.remove();
+  }
+  job.after("<%= escape_javascript(render('job_stats')) %>")
+}
