@@ -7,5 +7,5 @@ if($('#stats_<%= @job_name.gsub('::', '__') %>.stats.<%= @stat_type.to_s %>').si
   if(stats.size() > 0) {
     stats.remove();
   }
-  job.after("<%= escape_javascript(render('job_stats')) %>")
+  job.after("<%= escape_javascript(render('stats')) %>")
 }
