@@ -1,6 +1,7 @@
 %tr.stats{:class => "#{@stat_type.to_s}", :id => "stats_#{@job_name.gsub('::', '__')}"}
   %td{:colspan => 5}
     %h3= "#{@stat_type.to_s.capitalize} Jobs"
+    #job_pagination= will_paginate(@jobs)
     %table.stat
       %tr.header
         %td Priority

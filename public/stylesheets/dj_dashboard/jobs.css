@@ -15,7 +15,7 @@ tr.striped { background-color: #292929; }
 .total { text-align: center; font-weight: bold; border-top: 2px solid #888; padding: 20px; }
 
 .stats td { padding: 20px; background-color: #999; height: 385px; vertical-align: top; color: #333; }
-.stats td h3 { color: #fff; text-shadow: 1px 2px #333; font-size: 19px; margin: 0 0 20px 0; }
+.stats td h3 { color: #fff; text-shadow: 1px 2px #333; font-size: 19px; margin: 0 0 20px 0; float: left; }
 .stats.running td { background-color: #8BAB80; }
 .stats.running td .stat tr.striped td { background-color: #74916A; }
 .stats.pending td { background-color: #E8D672; }
@@ -29,3 +29,6 @@ tr.striped { background-color: #292929; }
 .stats td .stat tr.header td { border: none; font-size: 15px; text-align: left; font-weight: bold; }
 .stats td .stat td { height: 24px; font-size: 13px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #333; }
 .center { text-align: center }
+
+#job_pagination { float: right; font-size: 13px; }
+#job_pagination a { color: #fff; text-shadow: 1px 1px #666; }

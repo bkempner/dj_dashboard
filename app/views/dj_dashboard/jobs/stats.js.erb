@@ -1,11 +1,10 @@
 var job = $('#job_<%= @job_name.gsub('::', '__') %>')
 var stats = $('#stats_<%= @job_name.gsub('::', '__') %>')
+var stats_type = $('#stats_<%= @job_name.gsub('::', '__') %>.stats.<%= @stat_type.to_s %>')
 
-if($('#stats_<%= @job_name.gsub('::', '__') %>.stats.<%= @stat_type.to_s %>').size() > 0) {
-  stats.remove();
-} else {
-  if(stats.size() > 0) {
-    stats.remove();
-  }
+stats.remove();
+if(stats_type.size() === 0 || <%= @is_pagination_link %>) {
   job.after("<%= escape_javascript(render('stats')) %>")
 }
+
+$('.pagination a').attr('data-remote', true);
