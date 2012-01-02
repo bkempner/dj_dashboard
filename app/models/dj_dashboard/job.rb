@@ -7,10 +7,10 @@ module DjDashboard
       jobs.map do |job|
         {
           name:     job.job_name,
-          running:  Delayed::Job.where(job_name: job.job_name).where("locked_at is not null").count,
-          failed:   Delayed::Job.where(job_name: job.job_name).where("failed_at is not null and attempts >= 3").count,
-          pending:  Delayed::Job.where(job_name: job.job_name).where(locked_at: nil, failed_at: nil).count,
-          retrying: Delayed::Job.where(job_name: job.job_name).where(locked_at: nil).where("failed_at is not null").count
+          running: Delayed::Job.running(job.job_name).count,
+          failed:   Delayed::Job.failed(job.job_name).count,
+          pending:  Delayed::Job.pending(job.job_name).count,
+          retrying: Delayed::Job.retrying(job.job_name).count
         }
       end
     end
