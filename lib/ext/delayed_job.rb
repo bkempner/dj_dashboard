@@ -16,7 +16,7 @@ module Delayed
 
         def failed(job_name = nil)
           failed = job_name ? where(job_name: job_name) : scoped
-          failed.where("failed_at is not null and attempts >= 3")
+          failed.where("failed_at is not null and attempts >= #{Delayed::Worker.max_attempts}")
         end
 
         def pending(job_name = nil)
@@ -26,7 +26,7 @@ module Delayed
     
         def retrying(job_name = nil)
           retrying = job_name ? where(job_name: job_name) : scoped
-          retrying.where(locked_at: nil).where("failed_at is not null").where("attempts < 3")
+          retrying.where(locked_at: nil).where("failed_at is not null").where("attempts < #{Delayed::Worker.max_attempts}")
         end
       end
     end
