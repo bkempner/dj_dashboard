@@ -5,7 +5,7 @@ gemspec
 gem "rails", "3.0.11"
 gem "capybara", ">= 0.4.0"
 gem "sqlite3"
-gem 'delayed_job'
+gem 'delayed_job', "~> 2.0"
 gem 'haml'
 gem 'will_paginate'
 
