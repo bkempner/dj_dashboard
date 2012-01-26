@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    dj_dashboard (0.0.8)
-      delayed_job
+    dj_dashboard (0.0.8.1)
+      delayed_job (~> 2.0)
       haml
       rails (~> 3.0)
       sass
@@ -131,7 +131,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (>= 0.4.0)
-  delayed_job
+  delayed_job (~> 2.0)
   dj_dashboard!
   faker
   haml
