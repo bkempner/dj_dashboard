@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    dj_dashboard (0.0.8.1)
+    dj_dashboard (0.0.8.2)
       delayed_job (~> 2.0)
       haml
+      jquery-rails
       rails (~> 3.0)
-      sass
       will_paginate
 
 GEM
@@ -61,6 +61,9 @@ GEM
     ffi (1.0.11)
     haml (3.1.4)
     i18n (0.5.0)
+    jquery-rails (1.0.19)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json (1.6.3)
     machinist (1.0.6)
     mail (2.2.19)
@@ -109,7 +112,6 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.7.0)
     rubyzip (0.9.5)
-    sass (3.1.12)
     selenium-webdriver (2.15.0)
       childprocess (>= 0.2.1)
       ffi (~> 1.0.9)
