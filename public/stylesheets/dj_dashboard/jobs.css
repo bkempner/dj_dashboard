@@ -32,3 +32,4 @@ tr.striped { background-color: #292929; }
 
 #job_pagination { float: right; font-size: 13px; }
 #job_pagination a { color: #fff; text-shadow: 1px 1px #666; }
+#job_pagination .current { text-decoration: italic; font-weight: bold; }
