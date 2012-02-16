@@ -1,7 +1,6 @@
 require 'active_support/dependencies'
 require 'haml'
 require 'delayed_job'
-require 'will_paginate'
 
 module DjDashboard
 

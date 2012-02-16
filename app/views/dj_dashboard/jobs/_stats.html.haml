@@ -1,7 +1,6 @@
 %tr.stats{:class => "#{@stat_type.to_s}", :id => "stats_#{@job_name.gsub('::', '__')}"}
   %td{:colspan => 5}
     %h3= "#{@stat_type.to_s.capitalize} Jobs"
-    - #job_pagination= will_paginate(@jobs_wp)
     #job_pagination{ style: 'width: 500px' }= render :partial => "pagination", locals: { job_name: @job_name, type: @stat_type, pages: @pages, current_page: @current_page }
     %table.stat
       %tr.header
