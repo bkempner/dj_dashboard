@@ -1,24 +1,65 @@
 %ul.pagination{ style: 'float: right' }
-  %li{ style: 'display: inline; list-style-type: none;' }
+
+  %li
     - if current_page > pages.first
       = link_to "← Previous", dj_dashboard_job_stats_path(job_name: job_name, type: type, page: current_page - 1)
     - else
       ← Previous
-  - if pages.size >= 11
-    - pages.slice(0..9).each do |page|
-      %li{ style: 'display: inline; list-style-type: none;' }
-        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page)
-    %li{ style: 'display: inline; list-style-type: none;' }
-      %span ...
-    %li{ style: 'display: inline; list-style-type: none;' }
-      = link_to pages[pages.size-2], dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages[pages.size-2]) 
-    %li{ style: 'display: inline; list-style-type: none;' }
-      = link_to pages.last, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.last) 
-  - else pages.size <= 12
-    - pages.each do |page|
-      %li{ style: 'display: inline; list-style-type: none;' }
+
+  - if current_page < 9
+
+    - pages.slice(0..8).each do |page|
+      %li
         = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
-  %li{ style: 'display: inline; list-style-type: none;' } 
+    
+    %li
+      %span ...
+
+    %li
+      = link_to pages[-2], dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages[-2]) 
+    %li
+      = link_to pages.last, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.last) 
+
+  - elsif current_page >= 9 && current_page < pages.size-10
+
+    %li
+      = link_to pages.first, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.first) 
+    %li
+      = link_to pages.second, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.second) 
+
+    %li
+      %span ...
+
+    - ((current_page-4)..(current_page + 4)).each do |page|
+      %li
+        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
+   
+    %li
+      %span ...
+
+    %li
+      = link_to pages[-2], dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages[-2]) 
+    %li
+      = link_to pages.last, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.last) 
+
+  - elsif pages.size >= 10
+
+    - # begin (small)
+    %li
+      = link_to pages.first, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.first) 
+    %li
+      = link_to pages.second, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.second) 
+
+    - # divider
+    %li
+      %span ...
+
+    - # end (big)
+    - pages.slice(pages.size-9..pages.size).each do |page|
+      %li
+        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page)
+
+  %li
     - if current_page < pages.last
       = link_to "Next →", dj_dashboard_job_stats_path(job_name: job_name, type: type, page: current_page + 1)
     - else
