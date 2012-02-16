@@ -32,4 +32,6 @@ tr.striped { background-color: #292929; }
 
 #job_pagination { float: right; font-size: 13px; }
 #job_pagination a { color: #fff; text-shadow: 1px 1px #666; }
-#job_pagination .current { text-decoration: italic; font-weight: bold; }
+#job_pagination ul.pagination { float: right; }
+#job_pagination ul.pagination li { display: inline; list-style-type: none; }
+#job_pagination ul.pagination li.current { font-weight: bold; font-style: italic; }

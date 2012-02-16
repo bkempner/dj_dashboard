@@ -1,4 +1,4 @@
-%ul.pagination{ style: 'float: right' }
+%ul.pagination
 
   %li
     - if current_page > pages.first
@@ -23,7 +23,7 @@
     %li
       = link_to pages.last, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.last) 
 
-  - elsif current_page >= 9 && current_page < pages.size-10
+  - elsif current_page >= 9 && current_page < pages.size-8
 
     %li
       = link_to pages.first, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.first) 
@@ -48,9 +48,8 @@
     %li
       = link_to pages.last, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.last) 
 
-  - elsif pages.size >= 10
+  - else
 
-    - # begin (small)
     %li
       = link_to pages.first, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: pages.first) 
     %li
@@ -60,7 +59,6 @@
     %li
       %span ...
 
-    - # end (big)
     - pages.slice(pages.size-9..pages.size).each do |page|
       - if page == current_page
         %li.current= page
