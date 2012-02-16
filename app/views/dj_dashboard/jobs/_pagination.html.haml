@@ -9,8 +9,11 @@
   - if current_page < 9
 
     - pages.slice(0..8).each do |page|
-      %li
-        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
+      - if page == current_page
+        %li.current= page
+      - else
+        %li
+          = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
     
     %li
       %span ...
@@ -31,8 +34,11 @@
       %span ...
 
     - ((current_page-4)..(current_page + 4)).each do |page|
-      %li
-        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
+      - if page == current_page
+        %li.current= page
+      - else
+        %li
+          = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
    
     %li
       %span ...
@@ -56,8 +62,11 @@
 
     - # end (big)
     - pages.slice(pages.size-9..pages.size).each do |page|
-      %li
-        = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page)
+      - if page == current_page
+        %li.current= page
+      - else
+        %li
+          = link_to page, dj_dashboard_job_stats_path(job_name: job_name, type: type, page: page) 
 
   %li
     - if current_page < pages.last
