@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dj_dashboard (0.0.8.5)
+    dj_dashboard (0.0.8.6)
       delayed_job (~> 2.0)
       haml
       jquery-rails
