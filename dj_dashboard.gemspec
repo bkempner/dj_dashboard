@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency "haml"
   s.add_dependency "jquery-rails"
   s.add_dependency "delayed_job", '~> 2.0'
-  s.add_dependency "will_paginate"
   s.add_dependency "rails", '~> 3.0'
 
   s.add_development_dependency "sqlite3"
