@@ -2,13 +2,6 @@ module Delayed
   module Backend
     module Base
       module ClassMethods
-        alias_method :old_enqueue, :enqueue
-        def enqueue(*args)
-          job = old_enqueue(*args)
-          job.update_attributes(job_name: job.name) if job.is_a? Delayed::Backend::ActiveRecord::Job
-          job
-        end
-
         def running(job_name = nil)
           running = job_name ? where(job_name: job_name) : scoped
           running.where("locked_at is not null").where(:attempts => 0)
